@@ -36,7 +36,7 @@ report.to_a # =>
 
 
 # Adding footer
-total = lambda{|report| report.cells(1).map(&:value).inject(:+) } # you could format the currency here, but you got the idea
+total = lambda{|report| report.cells(1).map(&:value).inject(:+) }
 report.footer = ['Total', total]
 
 report.to_a # =>
@@ -44,8 +44,10 @@ report.to_a # =>
 #   ['Employee', 'Salary'],
 #   ['Foo', 'R$ 1.500,00'],
 #   ['Bar', 'R$ 1.234,56'],
-#   ['Total', '2734.56'],
+#   ['Total', '2734.56']
 # ]
+
+# you could have formated the total currency currency here, but you got the idea
 
 ```
 
