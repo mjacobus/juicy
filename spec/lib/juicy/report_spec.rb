@@ -79,7 +79,8 @@ describe Juicy::Report do
     end
   end
 
-  describe "#to_a" do
+  describe "convertes" do
+
     before do
       subject.add_column [:name, 'Employee'], :number
       subject.add_column :salary, :currency, { unit: 'R$ ', separator: ',', delimiter: '.' }
@@ -95,17 +96,34 @@ describe Juicy::Report do
       subject.footer = ['Total', sum]
     end
 
-    it "converts rows to array" do
-      expected = [
-        ['Employee', 'Salary'],
-        ['Foo', 'R$ 1.500,00'],
-        ['Bar', 'R$ 1.234,56'],
-        ['Total', 'R$ 2.734,56'],
-      ]
+    describe "#to_a" do
+      it "converts rows to array" do
+        expected = [
+          ['Employee', 'Salary'],
+          ['Foo', 'R$ 1.500,00'],
+          ['Bar', 'R$ 1.234,56'],
+          ['Total', 'R$ 2.734,56'],
+        ]
 
-      expect(subject.to_a).to eq(expected)
+        expect(subject.to_a).to eq(expected)
+      end
+
     end
 
+    describe "#to_hash" do
+      it "converts to hash" do
+        expected = {
+          header: ['Employee', 'Salary'],
+          rows: [
+            ['Foo', 'R$ 1.500,00'],
+            ['Bar', 'R$ 1.234,56'],
+          ],
+          footer: ['Total', 'R$ 2.734,56']
+        }
+
+        expect(subject.to_hash).to eq(expected)
+      end
+    end
   end
 
   describe "#cells" do

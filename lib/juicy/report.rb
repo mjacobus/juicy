@@ -58,6 +58,7 @@ module Juicy
       end
     end
 
+    # TODO: Dry, move to a module
     def to_a
       a = []
       a << column_definitions.map{|d| d[:label] }
@@ -68,6 +69,19 @@ module Juicy
         end
       end
       a
+    end
+
+    # TODO: Dry, move to a module
+    def to_hash
+      hash = { header: [], rows: [], footer: []}
+      hash[:header] = column_definitions.map{|d| d[:label] }
+      rows.each {|cells| hash[:rows] << cells.map(&:to_s) }
+      if footer
+        hash[:footer] = footer.map do |element|
+          element.respond_to?(:call) ? element.call(self) : element
+        end
+      end
+      hash
     end
 
     private
