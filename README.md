@@ -66,6 +66,32 @@ ReportRenderer::Xls.new(report).render  # TODO: Implement
 ## Cell types
 @TODO: Create doc
 
+### Overriting a cell type class
+
+#### Method 1
+Inform the default factory
+
+```ruby
+class UpperCaseString < Juicy::Cells::Base
+  def value
+    super(value)
+  end
+
+  def to_s
+    value.uppercase
+  end
+end
+
+Juicy::Cells::Factory.define_type_class(:string, UpperCaseString)
+```
+
+#### Method 2
+Override the factory
+
+```ruby
+report = new Juicy::Report(MyTypeFactory.new)
+```
+
 ## Creating custom cell types
 @TODO: Create doc
 
