@@ -47,7 +47,7 @@ report.to_a # =>
 #   ['Total', '2734.56']
 # ]
 
-# you could have formated the total currency currency here, but you got the idea
+# you could have formated the total currency here, but you got the idea
 
 ```
 
