@@ -89,7 +89,7 @@ Juicy::Cells::Factory.define_type_class(:string, UpperCaseString)
 Override the factory
 
 ```ruby
-report = new Juicy::Report(MyTypeFactory.new)
+report = Juicy::Report.new(MyTypeFactory.new)
 ```
 
 ## Creating custom cell types
