@@ -1,5 +1,9 @@
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start do
+  add_filter 'spec'
+  add_group 'juicy', 'lib/juicy'
+end
 
 require 'juicy'
 
