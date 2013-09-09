@@ -2,7 +2,8 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter 'spec'
-  add_group 'juicy', 'lib/juicy'
+  add_group 'Juicy', 'lib/juicy'
+  add_group 'Cells', 'lib/juicy/cells'
 end
 
 require 'juicy'
