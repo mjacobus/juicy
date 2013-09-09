@@ -82,7 +82,7 @@ describe Juicy::Report do
   describe "convertes" do
 
     before do
-      subject.add_column [:name, 'Employee'], :number
+      subject.add_column [:name, 'Employee'], :string
       subject.add_column :salary, :currency, { unit: 'R$ ', separator: ',', delimiter: '.' }
 
       subject.add_row('Foo', 1500)
@@ -129,7 +129,7 @@ describe Juicy::Report do
   describe "#cells" do
 
     before do
-      subject.add_column [:name, 'Employee'], :number
+      subject.add_column [:name, 'Employee'], :string
       subject.add_column :salary, :currency, { unit: 'R$ ', separator: ',', delimiter: '.' }
 
       subject.add_row('Foo', 1000)
