@@ -65,7 +65,7 @@ module Juicy
       rows.each {|cells| a << cells.map(&:to_s) }
       if footer
         a << footer.map do |element|
-          element.respond_to?(:call) ? element.call(self) : element
+          element.respond_to?(:call) ? element.call(self) : element.to_s
         end
       end
       a
@@ -78,7 +78,7 @@ module Juicy
       rows.each {|cells| hash[:rows] << cells.map(&:to_s) }
       if footer
         hash[:footer] = footer.map do |element|
-          element.respond_to?(:call) ? element.call(self) : element
+          element.respond_to?(:call) ? element.call(self) : element.to_s
         end
       end
       hash
