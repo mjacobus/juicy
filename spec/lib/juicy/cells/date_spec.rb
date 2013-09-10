@@ -14,4 +14,10 @@ describe Juicy::Cells::Date do
     subject = described_class.new('report', '2001-01-02')
     expect(subject.value).to be_a(Date)
   end
+
+  it "allows date value" do
+    date = Date.today
+    subject = described_class.new('report', date)
+    expect(subject.value).to eq(date)
+  end
 end
